@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/static/web_image/letsupgrade_logo.png">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <title>Capstone project</title>
+</head>
+<body>
+    <div class="top_bar">
+        <div class="logo">
+            <img src="{{url_for('static',filename='web_image/letsupgrade_logo1.png')}}">
+        </div>
+        <div class="top_title">
+            <h1>CT SCAN IMAGE CLASSIFICATION</h1>
+        </div>
+        <div class="top_blank">
+
+        </div>
+    </div>
+
+    <div class="container">
+        
+        <div class="center_console">
+
+            <div class="image_view" id="preview">
+
+            </div>
+            <form class="upload_form" action="/" , method ="post" enctype="multipart/form-data">
+            <div class="file_upload">
+            <input type="file" id="file" name="imageflie" onchange="img_preview(event)" >
+            <label for="file">Choose File</label>
+            </div>
+            <br>
+            <input type="submit" value="Predict" class="pred">
+        </form>
+        <div class="result">
+            
+            {% if prediction %}<h2>{{prediction}}</h2>{% endif %}
+            
+        </div>
+        </div>
+
+        <div class="sticky">
+            <h4>SURAJIT SINHA</h4>
+            <h5>LetsUpgrade DSC Batch-14</h5>
+        </div>
+</div>
+
+<script>
+
+    function img_preview(event)
+    {
+       var image = URL.createObjectURL(event.target.files[0]);
+       var image_div=document.getElementById('preview');
+       var newimg = document.createElement('img');
+       image_div.innerHTML='';
+       newimg.src=image;
+       image_div.appendChild(newimg);
+    }
+
+</script>
+
+</body>
+</html>
